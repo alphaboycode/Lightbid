@@ -1,0 +1,26 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Production build
+dist
+build
+
+# Foundry & compiler artifacts
+out/
+cache/
+broadcast/
+
+# Local workspace binaries
+bin/
+include/
+share/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE & OS
+.DS_Store
+*.log
