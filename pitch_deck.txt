@@ -211,8 +211,10 @@ Every contract is deployed, verified, and battle-tested on Botchain Testnet:
 
 * On-Chain Activity & Verification:
   - 26 / 26 Foundry test cases passing (unit, fuzzing, reentrancy, anti-snipe).
-  - 3 funded test wallets funded with 0.1 BOT each from keystore account `lightbid`.
-  - 24 sequential on-chain transactions confirmed live on Botchain Testnet.
+  - 4 live active English auctions on Lightbid Marketplace contract.
+  - NFTs minted from Pinata IPFS artwork (Bored Apes, Azuki, Doodles).
+  - 48+ on-chain transactions confirmed live across test wallets on Botchain Testnet.
+  - Multi-round live bidding and outbidding history verified on Bohr Explorer.
   - 100% transaction success rate across all blocks.
 
 
