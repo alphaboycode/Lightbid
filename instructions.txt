@@ -11,6 +11,10 @@ Go to .env, there are 3 wallets there.
 send 0.1 bot each to the 3 wallets (from lightbid wallet in cast wallet)
 
 
-I need 8 transactions from each wallets, so use each wallet to make 8 transactions
+I need 8 transactions from each wallets, so use each wallet to make 8 transactions.
+
+when i say transaction i mean creating auctions and placing bids
+
+u can use the images in src/assets to mint nfts and auction them, give them any name and description
 
 lets go

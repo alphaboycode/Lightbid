@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lightbid Pitch Deck - Decentralized English Auction Marketplace</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+    @page {
+      size: 1920px 1080px;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #080c14;
+      color: #f8fafc;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      width: 1920px;
+    }
+
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      page-break-after: always;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 64px 84px;
+      background: radial-gradient(circle at 85% 15%, rgba(245, 158, 11, 0.07) 0%, rgba(8, 12, 20, 1) 70%);
+      overflow: hidden;
+      border-top: 4px solid #f59e0b;
+    }
+
+    /* Ambient glow elements */
+    .glow-sphere {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Slide Header */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 20px;
+    }
+
+    .slide-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 16px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 24px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fbbf24;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+
+    .slide-tag.cyan {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: rgba(56, 189, 248, 0.35);
+      color: #38bdf8;
+    }
+
+    .slide-tag.emerald {
+      background: rgba(16, 185, 129, 0.12);
+      border-color: rgba(16, 185, 129, 0.35);
+      color: #34d399;
+    }
+
+    .slide-tag.purple {
+      background: rgba(168, 85, 247, 0.12);
+      border-color: rgba(168, 85, 247, 0.35);
+      color: #c084fc;
+    }
+
+    .slide-meta {
+      font-size: 15px;
+      font-weight: 600;
+      color: #64748b;
+      font-family: 'JetBrains Mono', monospace;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .slide-meta .chain-badge {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 4px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+    }
+
+    /* Content Layouts */
+    .slide-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 10;
+      margin: 28px 0;
+    }
+
+    h1.title {
+      font-size: 46px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    h2.subtitle {
+      font-size: 21px;
+      font-weight: 400;
+      color: #94a3b8;
+      max-width: 1250px;
+      line-height: 1.5;
+    }
+
+    .text-gold {
+      color: #f59e0b;
+    }
+
+    .gradient-gold {
+      color: #f59e0b;
+    }
+
+    .gradient-cyan {
+      color: #38bdf8;
+    }
+
+    /* Grids */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 28px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-top: 28px;
+    }
+
+    /* Cards */
+    .card {
+      background: #0f1523;
+      border: 1px solid #1e293b;
+      border-radius: 18px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .card.accent-gold {
+      border-top: 3px solid #f59e0b;
+    }
+
+    .card.accent-cyan {
+      border-top: 3px solid #38bdf8;
+    }
+
+    .card.accent-emerald {
+      border-top: 3px solid #10b981;
+    }
+
+    .card.accent-purple {
+      border-top: 3px solid #a855f7;
+    }
+
+    .card.accent-rose {
+      border-top: 3px solid #f43f5e;
+    }
+
+    .card-header-inner {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .card-icon.cyan {
+      background: rgba(56, 189, 248, 0.1);
+      border-color: rgba(56, 189, 248, 0.25);
+    }
+
+    .card-icon.emerald {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.25);
+    }
+
+    .card-icon.purple {
+      background: rgba(168, 85, 247, 0.1);
+      border-color: rgba(168, 85, 247, 0.25);
+    }
+
+    .card-icon.rose {
+      background: rgba(244, 63, 94, 0.1);
+      border-color: rgba(244, 63, 94, 0.25);
+    }
+
+    .card-title {
+      font-size: 21px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .card-desc {
+      font-size: 15px;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    .card-list {
+      list-style: none;
+      margin-top: 14px;
+    }
+
+    .card-list li {
+      font-size: 14.5px;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .card-list li::before {
+      content: "▹";
+      color: #f59e0b;
+      font-weight: bold;
+    }
+
+    .card-list.cyan li::before {
+      color: #38bdf8;
+    }
+
+    .card-list.emerald li::before {
+      color: #10b981;
+    }
+
+    /* Metric Badges */
+    .metric-value {
+      font-size: 38px;
+      font-weight: 800;
+      color: #fbbf24;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 6px;
+    }
+
+    .metric-value.cyan {
+      color: #38bdf8;
+    }
+
+    .metric-value.emerald {
+      color: #34d399;
+    }
+
+    .metric-label {
+      font-size: 14px;
+      color: #94a3b8;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    /* Diagram / Code style */
+    .diagram-container {
+      background: #090e18;
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.7;
+    }
+
+    /* Tables */
+    .table-container {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: #0f1523;
+      border: 1px solid #1e293b;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    .table-container th {
+      background: #141d30;
+      padding: 16px 20px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-align: left;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .table-container td {
+      padding: 15px 20px;
+      font-size: 14.5px;
+      color: #e2e8f0;
+      border-bottom: 1px solid #17223b;
+    }
+
+    .table-container tr:last-child td {
+      border-bottom: none;
+    }
+
+    .table-container tr:hover td {
+      background: rgba(245, 158, 11, 0.03);
+    }
+
+    .highlight-cell {
+      color: #fbbf24;
+      font-weight: 700;
+    }
+
+    .tag-pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .tag-emerald {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .tag-amber {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .tag-cyan {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    /* Slide Footer */
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 18px;
+      font-size: 13.5px;
+      color: #64748b;
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-brand {
+      font-weight: 700;
+      color: #94a3b8;
+    }
+
+    .footer-brand span {
+      color: #f59e0b;
+    }
+
+    .footer-explorer {
+      font-family: 'JetBrains Mono', monospace;
+      color: #38bdf8;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 1: COVER SLIDE                                         -->
+  <!-- ============================================================ -->
+  <section class="slide" style="justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at 50% 40%, rgba(245, 158, 11, 0.12) 0%, rgba(8, 12, 20, 1) 75%);">
+    <div class="glow-sphere" style="width: 500px; height: 500px; background: rgba(245, 158, 11, 0.15); top: 15%; left: 37%;"></div>
+
+    <div style="position: relative; z-index: 10; max-width: 1400px; display: flex; flex-direction: column; align-items: center;">
+      <div style="display: flex; gap: 12px; margin-bottom: 24px;">
+        <div class="slide-tag">⚡ Protocol Pitch Deck</div>
+        <div class="slide-tag cyan">Botchain Testnet • Chain ID: 968</div>
+      </div>
+
+      <h1 style="font-size: 88px; font-weight: 900; letter-spacing: -2px; line-height: 1.05; margin-bottom: 20px; color: #ffffff;">
+        LIGHT<span style="color: #f59e0b;">BID</span>
+      </h1>
+
+      <p style="font-size: 32px; font-weight: 600; color: #f1f5f9; margin-bottom: 14px; letter-spacing: -0.5px;">
+        Every Bid Counts. Every Auction Ends Fair. Zero MEV.
+      </p>
+
+      <p style="font-size: 20px; font-weight: 400; color: #94a3b8; max-width: 960px; line-height: 1.6; margin-bottom: 48px;">
+        Next-generation decentralized English auction engine for NFTs and digital assets on Botchain, featuring dynamic anti-snipe clock extensions, pull-payment escrow, and native BOT settlement.
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(4, 260px); gap: 20px; margin-bottom: 40px;">
+        <div class="card accent-gold" style="padding: 20px; text-align: center;">
+          <div class="metric-value">10 MIN</div>
+          <div class="metric-label">Anti-Snipe Extension</div>
+        </div>
+        <div class="card accent-cyan" style="padding: 20px; text-align: center;">
+          <div class="metric-value cyan">100%</div>
+          <div class="metric-label">Pull-Payment Escrow</div>
+        </div>
+        <div class="card accent-emerald" style="padding: 20px; text-align: center;">
+          <div class="metric-value emerald">3 ASSETS</div>
+          <div class="metric-label">ERC-721 / 1155 / 20</div>
+        </div>
+        <div class="card accent-purple" style="padding: 20px; text-align: center;">
+          <div class="metric-value" style="color: #c084fc;">~3 SEC</div>
+          <div class="metric-label">Botchain Finality</div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 32px; font-size: 14.5px; font-family: 'JetBrains Mono', monospace; color: #64748b;">
+        <span>Contract: <strong style="color: #cbd5e1;">0x39FfB249F207a2583Be272d2f55AcebE0d09b2b8</strong></span>
+        <span>•</span>
+        <span>RPC: <strong style="color: #38bdf8;">https://rpc.bohr.life</strong></span>
+        <span>•</span>
+        <span>Tokens: <strong style="color: #fbbf24;">BOT / tUSD / LNFT</strong></span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 2: THE PROBLEM                                         -->
+  <!-- ============================================================ -->
+  <section class="slide">
+    <div class="slide-header">
+      <div class="slide-tag" style="background: rgba(244, 63, 94, 0.12); border-color: rgba(244, 63, 94, 0.35); color: #fb7185;">
+        ⚠️ Market Pain Points
+      </div>
+      <div class="slide-meta">
+        <span class="chain-badge">Web3 Auction Architecture</span>
+        <span>Slide 02 / 11</span>
+      </div>
+    </div>
+
+    <div class="slide-content">
+      <h1 class="title">The Problem: Legacy Web3 Auctions are Broken</h1>
+      <h2 class="subtitle">
+        Traditional on-chain auctions suffer from predatory MEV bot front-running, contract-level DoS attack vectors, and high friction that destroy true price discovery.
+      </h2>
+
+      <div class="grid-4">
+        <div class="card accent-rose">
+          <div>
+            <div class="card-header-inner">
+              <div class="card-icon rose">🤖</div>
+              <div class="card-title">Last-Second Sniping</div>
+            </div>
+            <p class="card-desc">
+              Conventional auctions end at a static block timestamp. Automated sniper bots monitor the mempool and broadcast higher bids with exorbitant priority gas in the final 500ms, completely boxing out human bidders.
+            </p>
+          </div>
+          <ul class="card-list" style="margin-top: 16px;">
+            <li>Zero time for legitimate bids to respond</li>
+            <li>Suppresses final clearing prices for creators</li>
+            <li>Enriches MEV searchers at users' expense</li>
+          </ul>
+        </div>
+
+        <div class="card accent-rose">
+          <div>
+            <div class="card-header-inner">
+              <div class="card-icon rose">🛑</div>
+              <div class="card-title">Push-Payment DoS</div>
+            </div>
+            <p class="card-desc">
+              Standard marketplace contracts automatically "push" refunded funds back to the previous bidder inside the <code style="color: #f43f5e;">bid()</code> transaction. If a malicious bidder's contract reverts, the entire auction is frozen forever.
+            </p>
+          </div>
+          <ul class="card-list" style="margin-top: 16px;">
+            <li>Reverting <code style="font-size: 13px;">receive()</code> breaks bidding loop</li>
+            <li>Attacker locks in low bid as winning bid</li>
+            <li>Reentrancy and state mutation risks</li>
+          </ul>
+        </div>
+
+        <div class="card accent-rose">
+          <div>
+            <div class="card-header-inner">
+              <div class="card-icon rose">🔄</div>
+              <div class="card-title">Wrapping & High Fees</div>
+            </div>
+            <p class="card-desc">
+              Platforms on Ethereum and L2s force users to wrap native currency into WETH or ERC-20 proxies, generating extra approval transactions, gas burn, and friction for retail collectors and gamers.
+            </p>
+          </div>
+          <ul class="card-list" style="margin-top: 16px;">
+            <li>Multi-step approval & wrap workflows</li>
+            <li>High gas fees ($5–$30 per transaction on L1)</li>
+            <li>Unnecessary cognitive overhead for users</li>
+          </ul>
+        </div>
+
+        <div class="card accent-rose">
+          <div>
+            <div class="card-header-inner">
+              <div class="card-icon rose">🗂️</div>
+              <div class="card-title">Fragile Metadata</div>
+            </div>
+            <p class="card-desc">
+              Many Web3 auction platforms rely on centralized Web2 AWS S3 buckets or temporary API gateways for media and metadata storage, resulting in dead links, 404 errors, and disappearing artwork.
+            </p>
+          </div>
+          <ul class="card-list" style="margin-top: 16px;">
+            <li>Centralized single point of failure</li>
+            <li>High risk of NFT media "link rot"</li>
+            <li>No integrated creator minting pipeline</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div class="footer-brand">LIGHT<span>BID</span> PROTOCOL</div>
+      <div>Botchain Testnet (Chain ID 968) • <span class="footer-explorer">https://scan.bohr.life</span></div>
+      <div>Page 2</div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 3: THE SOLUTION                                        -->
+  <!-- ============================================================ -->
+  <section class="slide">
+    <div class="slide-header">
+      <div class="slide-tag emerald">
+        ✨ Protocol Innovation
+      </div>
+      <div class="slide-meta">
+        <span class="chain-badge">Lightbid Mechanics</span>
+        <span>Slide 03 / 11</span>
+      </div>
+    </div>
+
+    <div class="slide-content">
+      <h1 class="title">The Solution: The Lightbid Engine</h1>
+      <h2 class="subtitle">
+        A mathematically fair, zero-MEV English auction protocol engineered from the ground up for Botchain’s sub-second execution environment.
+      </h2>
+
+      <div class="grid-4">
+        <div class="card accent-gold">
+          <div>
+            <div class="card-header-inner">
+              <div class="card-icon">⏱️</div>
+              <div class="card-title">Dynamic Anti-Snipe</div>
+            </div>
+            <p class="card-desc">
+              Whenever a valid bid is placed within 10 minutes of scheduled auction completion (<code style="color: #fbbf24;">EXTENSION_WINDOW</code>), the clock automatically extends by an additional 10 minutes.
+            </p>
+          </div>
+          <ul class="card-list">
+            <li>Guarantees human bidders fair reaction time</li>
+            <li>Simulates natural competitive live auction room</li>
+            <li>Maximizes authentic asset value for creators</li>
+          </ul>
+        </div>
+
+        <div class="card accent-cyan">
+          <div>
+            <div class="card-header-inner">
+              <div class="card-icon cyan">🛡️</div>
+              <div class="card-title">Pull-Payment Escrow</div>
+            </div>
+            <p class="card-desc">
+              Outbid funds are isolated into an internal ledger (<code style="color: #38bdf8;">pendingReturns[bidder]</code>). Bidders withdraw accumulated funds at any time with one click, completely immune to external revert exploits.
+            </p>
+          </div>
+          <ul class="card-list cyan">
+            <li>Zero possibility of auction denial-of-service</li>
+            <li>Reentrancy-guarded Checks-Effects-Interactions</li>
+            <li>One-click aggregated withdrawal across all bids</li>
+          </ul>
+        </div>
+
+        <div class="card accent-emerald">
+          <div>
+            <div class="card-header-inner">
+              <div class="card-icon emerald">⚡</div>
+              <div class="card-title">Native BOT Settlement</div>
+            </div>
+            <p class="card-desc">
+              Bidding and settlement occur directly in Botchain native <strong style="color: #34d399;">BOT</strong>. Zero wrapped tokens. Zero intermediate token approvals. Sub-cent gas fees and instant ~3-second block finality.
+            </p>
+          </div>
+          <ul class="card-list emerald">
+            <li>Immediate bidding directly from native wallet</li>
+            <li>Sub-cent transaction gas execution</li>
+            <li>Seamless user onboarding without WETH hurdles</li>
+          </ul>
+        </div>
+
+        <div class="card accent-purple">
+          <div>
+            <div class="card-header-inner">
+              <div class="card-icon purple">📦</div>
+              <div class="card-title">Multi-Asset & IPFS</div>
+            </div>
+            <p class="card-desc">
+              A single marketplace contract supporting ERC-721 1-of-1s, ERC-1155 editions, and ERC-20 token bundles, natively connected to Pinata Cloud IPFS for decentralized immutable storage.
+            </p>
+          </div>
+          <ul class="card-list" style="margin-top: 14px;">
+            <li>Universal auction standard for all digital items</li>
+            <li>In-app NFT minting directly to Pinata IPFS</li>
+            <li>OpenSea-compliant dynamic metadata JSON</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div class="footer-brand">LIGHT<span>BID</span> PROTOCOL</div>
+      <div>Botchain Testnet (Chain ID 968) • <span class="footer-explorer">https://scan.bohr.life</span></div>
+      <div>Page 3</div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 4: ARCHITECTURE & PROTOCOL DESIGN                      -->
+  <!-- ============================================================ -->
+  <section class="slide">
+    <div class="slide-header">
+      <div class="slide-tag cyan">
+        🏛️ System Architecture
+      </div>
+      <div class="slide-meta">
+        <span class="chain-badge">Solidity ^0.8.24 • Foundry • OpenZeppelin v5</span>
+        <span>Slide 04 / 11</span>
+      </div>
+    </div>
+
+    <div class="slide-content">
+      <h1 class="title">Architecture & State Machine</h1>
+      <h2 class="subtitle">
+        Rigorous smart contract lifecycle ensuring mathematical determinism, gas efficiency, and multi-asset isolation.
+      </h2>
+
+      <div class="grid-2">
+        <div class="diagram-container">
+<span style="color: #f59e0b; font-weight: 700;">+-------------------------------------------------------------------------+</span>
+<span style="color: #f59e0b; font-weight: 700;">|                       LIGHTBID CORE PROTOCOL                            |</span>
+<span style="color: #f59e0b; font-weight: 700;">+-------------------------------------------------------------------------+</span>
+       │                                                 │
+       ▼                                                 ▼
+<span style="color: #38bdf8; font-weight: 700;">[ 1. CREATE AUCTION ]</span>                             <span style="color: #38bdf8; font-weight: 700;">[ 2. PLACE BID (Native BOT) ]</span>
+ ├── Escrow Asset (ERC-721 / 1155 / 20)           ├── Verify msg.value >= reservePrice
+ ├── Bound Duration: 15 min <= t <= 30 days       ├── Verify increment: msg.value >= minBid
+ └── Validate Min Increment BPS (1% - 50%)        ├── <strong style="color: #fbbf24;">ANTI-SNIPE EXTENSION:</strong>
+                                                  │     if (endTime - now <= 10 min):
+       │                                          │         endTime += 10 min;
+       │                                          └── <strong style="color: #34d399;">SAFE PULL ESCROW:</strong>
+       │                                                pendingReturns[prevBidder] += prevBid;
+       ▼                                                 │
+<span style="color: #38bdf8; font-weight: 700;">[ 3. SETTLE AUCTION ]</span>                                    ▼
+ ├── Require block.timestamp >= endTime           <span style="color: #38bdf8; font-weight: 700;">[ 4. WITHDRAW ESCROW ]</span>
+ ├── Protocol Fee (2.5%) -> feeRecipient          ├── Bidders call withdrawPendingReturns()
+ ├── Net Proceeds (97.5%) -> Seller               ├── Zero out balance: pendingReturns[msg.sender]=0
+ └── Escrowed Asset -> Winning Bidder             └── Native transfer via call{value: amount}("")
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 18px;">
+          <div class="card accent-gold" style="padding: 22px;">
+            <div style="font-size: 17px; font-weight: 700; color: #fbbf24; margin-bottom: 8px;">
+              ⏱️ Anti-Snipe Implementation (Solidity)
+            </div>
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 13.5px; color: #cbd5e1; background: #080c14; padding: 12px; border-radius: 8px; line-height: 1.5;">
+uint256 public constant EXTENSION_WINDOW = 10 minutes;<br>
+uint256 public constant EXTENSION_DURATION = 10 minutes;<br><br>
+if (auction.endTime - block.timestamp <= EXTENSION_WINDOW) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;auction.endTime += EXTENSION_DURATION;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;emit AuctionExtended(auctionId, auction.endTime);<br>
+}
+            </p>
+          </div>
+
+          <div class="card accent-emerald" style="padding: 22px;">
+            <div style="font-size: 17px; font-weight: 700; color: #34d399; margin-bottom: 8px;">
+              🛡️ Safe Pull-Payment Ledger (Reentrancy-Proof)
+            </div>
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 13.5px; color: #cbd5e1; background: #080c14; padding: 12px; border-radius: 8px; line-height: 1.5;">
+// Checks-Effects-Interactions Pattern<br>
+uint256 refund = pendingReturns[msg.sender];<br>
+if (refund == 0) revert NoFundsToWithdraw();<br>
+pendingReturns[msg.sender] = 0; // State updated first<br>
+(bool sent, ) = msg.sender.call{value: refund}("");<br>
+if (!sent) revert RefundFailed();
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div class="footer-brand">LIGHT<span>BID</span> PROTOCOL</div>
+      <div>Botchain Testnet (Chain ID 968) • <span class="footer-explorer">https://scan.bohr.life</span></div>
+      <div>Page 4</div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 5: MULTI-ASSET & PINATA IPFS CREATOR SUITE            -->
+  <!-- ============================================================ -->
+  <section class="slide">
+    <div class="slide-header">
+      <div class="slide-tag purple">
+        🎨 Multi-Asset & IPFS Studio
+      </div>
+      <div class="slide-meta">
+        <span class="chain-badge">Decentralized Content Primitives</span>
+        <span>Slide 05 / 11</span>
+      </div>
+    </div>
+
+    <div class="slide-content">
+      <h1 class="title">Multi-Asset Standards & Pinata Creator Studio</h1>
+      <h2 class="subtitle">
+        Universal asset compatibility paired with a full Web3 minting suite powered by Pinata Cloud IPFS.
+      </h2>
+
+      <div class="grid-3">
+        <div class="card accent-gold">
+          <div>
+            <div class="card-header-inner">
+              <div class="card-icon">💎</div>
+              <div class="card-title">ERC-721 Digital Art</div>
+            </div>
+            <p class="card-desc">
+              Full support for non-fungible 1-of-1 digital masterpieces, photography, music, and virtual world parcels.
+            </p>
+          </div>
+          <ul class="card-list">
+            <li>Integrates <code style="font-size: 13px;">safeTransferFrom</code> & <code style="font-size: 13px;">IERC721Receiver</code></li>
+            <li>Direct metadata extraction and high-res preview</li>
+            <li>Test token deployed: <strong style="color: #fbbf24;">LNFT (0xD8c9...B63b)</strong></li>
+            <li>Royalties and creator ownership preserved</li>
+          </ul>
+        </div>
+
+        <div class="card accent-cyan">
+          <div>
+            <div class="card-header-inner">
+              <div class="card-icon cyan">🎮</div>
+              <div class="card-title">ERC-1155 Editions & Gaming</div>
+            </div>
+            <p class="card-desc">
+              Engineered for gaming economies, event passes, tradeable weapons, and limited-run multi-edition drops.
+            </p>
+          </div>
+          <ul class="card-list cyan">
+            <li>Semi-fungible batch transfer support</li>
+            <li>Implements <code style="font-size: 13px;">IERC1155Receiver</code> hooks</li>
+            <li>Fractional auctioning of edition bundles</li>
+            <li>Sub-cent gas efficiency for in-game item trade</li>
+          </ul>
+        </div>
+
+        <div class="card accent-purple">
+          <div>
+            <div class="card-header-inner">
+              <div class="card-icon purple">💰</div>
+              <div class="card-title">ERC-20 Token Bundles</div>
+            </div>
+            <p class="card-desc">
+              Auction off allocations of project tokens, liquidity provider (LP) shares, or OTC token blocks.
+            </p>
+          </div>
+          <ul class="card-list" style="margin-top: 14px;">
+            <li>Built with OpenZeppelin <code style="font-size: 13px;">SafeERC20</code></li>
+            <li>Admin token allowlist protection for security</li>
+            <li>Test token deployed: <strong style="color: #c084fc;">tUSD (0x249D...0d82d)</strong></li>
+            <li>Ideal for community OTC and treasury diversification</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Creator Suite Box -->
+      <div class="card" style="margin-top: 24px; padding: 22px 30px; background: rgba(168, 85, 247, 0.05); border: 1px solid rgba(168, 85, 247, 0.3); display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 20px;">
+          <div style="font-size: 38px;">🌐</div>
+          <div>
+            <div style="font-size: 19px; font-weight: 700; color: #ffffff;">Integrated Pinata Cloud IPFS Pipeline</div>
+            <div style="font-size: 14px; color: #94a3b8; margin-top: 4px;">
+              Creators drag-and-drop artwork directly inside the dApp. The engine uploads the file to Pinata IPFS, builds an OpenSea-compliant JSON manifest, pins the metadata, and prompts an on-chain mint transaction in under 10 seconds.
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 12px;">
+          <span class="tag-pill tag-purple">Pinata JWT Authenticated</span>
+          <span class="tag-pill tag-cyan">CIDv1 Pinned</span>
+          <span class="tag-pill tag-emerald">100% Decentralized</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div class="footer-brand">LIGHT<span>BID</span> PROTOCOL</div>
+      <div>Botchain Testnet (Chain ID 968) • <span class="footer-explorer">https://scan.bohr.life</span></div>
+      <div>Page 5</div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 6: LIVE TRACTION & ON-CHAIN VERIFICATION              -->
+  <!-- ============================================================ -->
+  <section class="slide">
+    <div class="slide-header">
+      <div class="slide-tag emerald">
+        🚀 Verified Testnet Traction
+      </div>
+      <div class="slide-meta">
+        <span class="chain-badge">Live On-Chain Proof</span>
+        <span>Slide 06 / 11</span>
+      </div>
+    </div>
+
+    <div class="slide-content">
+      <h1 class="title">Live On-Chain Verification on Botchain</h1>
+      <h2 class="subtitle">
+        Not a prototype or mockup. Lightbid is deployed, fully configured, and verified live on Botchain Testnet (Chain ID: 968).
+      </h2>
+
+      <div class="grid-4" style="margin-bottom: 20px;">
+        <div class="card accent-gold" style="padding: 22px;">
+          <div class="metric-value">26 / 26</div>
+          <div class="metric-label">Foundry Tests Passed</div>
+          <p style="font-size: 13px; color: #64748b; margin-top: 6px;">Unit, fuzzing & reentrancy suites</p>
+        </div>
+        <div class="card accent-cyan" style="padding: 22px;">
+          <div class="metric-value cyan">3 CONTRACTS</div>
+          <div class="metric-label">Deployed & Verified</div>
+          <p style="font-size: 13px; color: #64748b; margin-top: 6px;">Marketplace + ERC20 + ERC721</p>
+        </div>
+        <div class="card accent-emerald" style="padding: 22px;">
+          <div class="metric-value emerald">24 TXS</div>
+          <div class="metric-label">Multi-Wallet Activity</div>
+          <p style="font-size: 13px; color: #64748b; margin-top: 6px;">8 transactions across 3 test wallets</p>
+        </div>
+        <div class="card accent-purple" style="padding: 22px;">
+          <div class="metric-value" style="color: #c084fc;">100%</div>
+          <div class="metric-label">Tx Success Rate</div>
+          <p style="font-size: 13px; color: #64748b; margin-top: 6px;">Zero reverts or failed calls</p>
+        </div>
+      </div>
+
+      <table class="table-container">
+        <thead>
+          <tr>
+            <th>Contract Name</th>
+            <th>Contract Address</th>
+            <th>Status</th>
+            <th>On-Chain Verification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight: 700; color: #fbbf24;">⚡ Lightbid Marketplace</td>
+            <td style="font-family: 'JetBrains Mono', monospace; font-size: 14px;">0x39FfB249F207a2583Be272d2f55AcebE0d09b2b8</td>
+            <td><span class="tag-pill tag-emerald">● Live & Deployed</span></td>
+            <td><a href="https://scan.bohr.life/address/0x39FfB249F207a2583Be272d2f55AcebE0d09b2b8" class="footer-explorer" target="_blank">View on Bohr Scan ↗</a></td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700; color: #38bdf8;">💵 TestERC20 (tUSD Faucet)</td>
+            <td style="font-family: 'JetBrains Mono', monospace; font-size: 14px;">0x249D23b4c2e58cf40eB0273e6afCE8d23170d82d</td>
+            <td><span class="tag-pill tag-cyan">● Faucet Active</span></td>
+            <td><a href="https://scan.bohr.life/address/0x249D23b4c2e58cf40eB0273e6afCE8d23170d82d" class="footer-explorer" target="_blank">View on Bohr Scan ↗</a></td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700; color: #a855f7;">🖼️ TestERC721 (LNFT Mintable)</td>
+            <td style="font-family: 'JetBrains Mono', monospace; font-size: 14px;">0xD8c92E8e8ECe7F00C947eB2C12Cdb2A110f9B63b</td>
+            <td><span class="tag-pill tag-purple">● Mint Studio Ready</span></td>
+            <td><a href="https://scan.bohr.life/address/0xD8c92E8e8ECe7F00C947eB2C12Cdb2A110f9B63b" class="footer-explorer" target="_blank">View on Bohr Scan ↗</a></td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700; color: #10b981;">👥 Multi-Wallet Load Testing</td>
+            <td style="font-family: 'JetBrains Mono', monospace; font-size: 13.5px; color: #94a3b8;">Wallets: 0x9a06...6Ef9 | 0x6738...3794 | 0x4276...98b9</td>
+            <td><span class="tag-pill tag-emerald">● 24 Txs Executed</span></td>
+            <td><span style="color: #94a3b8; font-size: 13.5px;">Confirmed in Blocks 28721904–28721967</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="slide-footer">
+      <div class="footer-brand">LIGHT<span>BID</span> PROTOCOL</div>
+      <div>Botchain Testnet (Chain ID 968) • <span class="footer-explorer">https://scan.bohr.life</span></div>
+      <div>Page 6</div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 7: PRODUCTION-GRADE FRONTEND UX                        -->
+  <!-- ============================================================ -->
+  <section class="slide">
+    <div class="slide-header">
+      <div class="slide-tag cyan">
+        💻 Frontend & User Experience
+      </div>
+      <div class="slide-meta">
+        <span class="chain-badge">React 18 • Vite • Tailwind • Wagmi v2</span>
+        <span>Slide 07 / 11</span>
+      </div>
+    </div>
+
+    <div class="slide-content">
+      <h1 class="title">Production-Grade Frontend & User Experience</h1>
+      <h2 class="subtitle">
+        A glassmorphic Web3 application engineered for maximum clarity, real-time reactive feedback, and zero cognitive friction.
+      </h2>
+
+      <div class="grid-4">
+        <div class="card accent-gold">
+          <div>
+            <div class="card-header-inner">
+              <div class="card-icon">⏱️</div>
+              <div class="card-title">Live Countdown UI</div>
+            </div>
+            <p class="card-desc">
+              Precision high-frequency countdown timers display remaining auction duration with automatic visual alerts when anti-snipe extensions trigger.
+            </p>
+          </div>
+          <ul class="card-list">
+            <li>Dynamic color-coded state pills</li>
+            <li>Real-time block synchronization</li>
+            <li>Anti-snipe notification banners</li>
+          </ul>
+        </div>
+
+        <div class="card accent-cyan">
+          <div>
+            <div class="card-header-inner">
+              <div class="card-icon cyan">📊</div>
+              <div class="card-title">Smart Bidding Engine</div>
+            </div>
+            <p class="card-desc">
+              Automatic minimum next bid calculator based on auction basis points (BPS), preventing sub-increment transaction reverts before submission.
+            </p>
+          </div>
+          <ul class="card-list cyan">
+            <li>Pre-validates user wallet balance</li>
+            <li>1-click increment presets (+5%, +10%)</li>
+            <li>Instant gas estimation on Botchain</li>
+          </ul>
+        </div>
+
+        <div class="card accent-emerald">
+          <div>
+            <div class="card-header-inner">
+              <div class="card-icon emerald">🔔</div>
+              <div class="card-title">Sticky Refund Drawer</div>
+            </div>
+            <p class="card-desc">
+              Persistent navigation bar indicator alerts bidders whenever they have accumulated outbid refunds waiting in the escrow ledger.
+            </p>
+          </div>
+          <ul class="card-list emerald">
+            <li>Single-click claim across all bids</li>
+            <li>Aggregated escrow balance tracker</li>
+            <li>Zero forgotten or trapped funds</li>
+          </ul>
+        </div>
+
+        <div class="card accent-purple">
+          <div>
+            <div class="card-header-inner">
+              <div class="card-icon purple">💧</div>
+              <div class="card-title">In-App Token Faucet</div>
+            </div>
+            <p class="card-desc">
+              Dedicated testnet token faucet dispensing 1,000 tUSD with cooldown protection and automatic asset addition to MetaMask.
+            </p>
+          </div>
+          <ul class="card-list" style="margin-top: 14px;">
+            <li>1,000 tUSD per 24 hours</li>
+            <li>One-click MetaMask token registration</li>
+            <li>Enables immediate bundle testing</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 24px; padding: 18px 28px; background: #0c1220; display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+        <span style="font-size: 15px; color: #94a3b8;">
+          ⚡ Built for rapid scale: <strong style="color: #ffffff;">Lightweight client bundle</strong> (0 linter errors, TypeScript strict, sub-1s page transitions).
+        </span>
+        <span class="tag-pill tag-amber">Vite 5 Production Build Ready</span>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div class="footer-brand">LIGHT<span>BID</span> PROTOCOL</div>
+      <div>Botchain Testnet (Chain ID 968) • <span class="footer-explorer">https://scan.bohr.life</span></div>
+      <div>Page 7</div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 8: MARKET OPPORTUNITY & BUSINESS MODEL                 -->
+  <!-- ============================================================ -->
+  <section class="slide">
+    <div class="slide-header">
+      <div class="slide-tag" style="background: rgba(251, 191, 36, 0.12); border-color: rgba(251, 191, 36, 0.35); color: #fbbf24;">
+        📈 Market & Business Model
+      </div>
+      <div class="slide-meta">
+        <span class="chain-badge">Sustainable Economics</span>
+        <span>Slide 08 / 11</span>
+      </div>
+    </div>
+
+    <div class="slide-content">
+      <h1 class="title">Market Opportunity & Protocol Economics</h1>
+      <h2 class="subtitle">
+        Capturing high-velocity digital asset auction volume through a non-extractive, volume-aligned fee model.
+      </h2>
+
+      <div class="grid-3" style="margin-bottom: 24px;">
+        <div class="card accent-gold" style="padding: 24px;">
+          <div class="metric-value">$102B</div>
+          <div class="metric-label">TAM: Global Digital Auctions by 2030</div>
+          <p style="font-size: 13.5px; color: #94a3b8; margin-top: 8px;">
+            Encompasses digital art, gaming assets, metaverse land, and tokenized real-world assets (RWAs).
+          </p>
+        </div>
+
+        <div class="card accent-cyan" style="padding: 24px;">
+          <div class="metric-value cyan">$18B</div>
+          <div class="metric-label">SAM: High-Throughput EVM Volume</div>
+          <p style="font-size: 13.5px; color: #94a3b8; margin-top: 8px;">
+            Annual transaction volume migrating to next-generation low-fee, high-speed L1/L2 networks like Botchain.
+          </p>
+        </div>
+
+        <div class="card accent-emerald" style="padding: 24px;">
+          <div class="metric-value emerald">$50M</div>
+          <div class="metric-label">SOM: Target Year 1 GMV</div>
+          <p style="font-size: 13.5px; color: #94a3b8; margin-top: 8px;">
+            Target initial market capture on Botchain ecosystem across gaming, launchpads, and creator drops.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card" style="padding: 24px;">
+          <div style="font-size: 18px; font-weight: 700; color: #fbbf24; margin-bottom: 10px;">
+            1. Protocol Settlement Fee (2.5%)
+          </div>
+          <p style="font-size: 14px; color: #94a3b8; line-height: 1.6;">
+            A standard 250 BPS (2.5%) fee deducted from the final sale proceeds upon successful settlement. Capped by contract at 10% to protect creators.
+          </p>
+          <div style="margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #cbd5e1;">
+            • At $20M GMV = $500,000 protocol revenue<br>
+            • At $50M GMV = $1,250,000 protocol revenue
+          </div>
+        </div>
+
+        <div class="card" style="padding: 24px;">
+          <div style="font-size: 18px; font-weight: 700; color: #38bdf8; margin-bottom: 10px;">
+            2. Curated Launchpad Drops
+          </div>
+          <p style="font-size: 14px; color: #94a3b8; line-height: 1.6;">
+            Premium homepage placement, marketing syndication, and verified badge auctions for flagship game releases and top digital artists.
+          </p>
+          <div style="margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #cbd5e1;">
+            • Fixed curation & listing tier fees<br>
+            • Co-marketing revenue share
+          </div>
+        </div>
+
+        <div class="card" style="padding: 24px;">
+          <div style="font-size: 18px; font-weight: 700; color: #a855f7; margin-bottom: 10px;">
+            3. Enterprise White-Label SDK
+          </div>
+          <p style="font-size: 14px; color: #94a3b8; line-height: 1.6;">
+            Turnkey auction widgets and smart contract factory deployments for external Web3 games and DAO treasury liquidation sales.
+          </p>
+          <div style="margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #cbd5e1;">
+            • SDK licensing & API access<br>
+            • Custom secondary royalty split contracts
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div class="footer-brand">LIGHT<span>BID</span> PROTOCOL</div>
+      <div>Botchain Testnet (Chain ID 968) • <span class="footer-explorer">https://scan.bohr.life</span></div>
+      <div>Page 8</div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 9: COMPETITIVE ADVANTAGE MATRIX                        -->
+  <!-- ============================================================ -->
+  <section class="slide">
+    <div class="slide-header">
+      <div class="slide-tag cyan">
+        🏆 Competitive Landscape
+      </div>
+      <div class="slide-meta">
+        <span class="chain-badge">Unfair Advantage</span>
+        <span>Slide 09 / 11</span>
+      </div>
+    </div>
+
+    <div class="slide-content">
+      <h1 class="title">Competitive Advantage & Feature Matrix</h1>
+      <h2 class="subtitle">
+        How Lightbid fundamentally outperforms incumbent marketplaces across security, fairness, and asset flexibility.
+      </h2>
+
+      <table class="table-container">
+        <thead>
+          <tr>
+            <th>Feature Dimension</th>
+            <th>OpenSea / Zora</th>
+            <th>Foundation</th>
+            <th style="background: rgba(245, 158, 11, 0.15); color: #fbbf24;">⚡ LIGHTBID (BOTCHAIN)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight: 700;">Anti-Snipe Protection</td>
+            <td>15 min (ERC-721 only)</td>
+            <td>15 min (Fixed)</td>
+            <td class="highlight-cell">Dynamic 10 min (ERC-721, 1155, 20)</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700;">Bid Refund Architecture</td>
+            <td>Push Payment (Revert DoS Risk)</td>
+            <td>Push Payment (Revert DoS Risk)</td>
+            <td class="highlight-cell">Safe Pull-Payment Escrow (Zero DoS)</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700;">Supported Asset Standards</td>
+            <td>ERC-721 primarily</td>
+            <td>ERC-721 only</td>
+            <td class="highlight-cell">Universal: ERC-721, ERC-1155, ERC-20</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700;">Currency Settlement</td>
+            <td>Wrapped Tokens (WETH)</td>
+            <td>Wrapped Tokens (WETH)</td>
+            <td class="highlight-cell">Native BOT (Zero Wrapping Friction)</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700;">Average Gas Cost per Bid</td>
+            <td>$5.00 – $25.00 (L1)</td>
+            <td>$5.00 – $25.00 (L1)</td>
+            <td class="highlight-cell">Sub-Cent (&lt; $0.001 on Botchain)</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700;">Settlement Finality</td>
+            <td>12 – 15 Seconds</td>
+            <td>12 – 15 Seconds</td>
+            <td class="highlight-cell">~3 Seconds Instant Finality</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700;">Creator IPFS Mint Studio</td>
+            <td>Separate Studio Tool</td>
+            <td>No In-App Studio</td>
+            <td class="highlight-cell">Built-In Pinata Cloud IPFS Pipeline</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700;">Emergency Safeguards</td>
+            <td>Centralized Operator Registry</td>
+            <td>Basic Pause</td>
+            <td class="highlight-cell">Pausable + Ownable2Step + ReentrancyGuard</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="slide-footer">
+      <div class="footer-brand">LIGHT<span>BID</span> PROTOCOL</div>
+      <div>Botchain Testnet (Chain ID 968) • <span class="footer-explorer">https://scan.bohr.life</span></div>
+      <div>Page 9</div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 10: STRATEGIC ROADMAP                                  -->
+  <!-- ============================================================ -->
+  <section class="slide">
+    <div class="slide-header">
+      <div class="slide-tag emerald">
+        🗺️ Execution Timeline
+      </div>
+      <div class="slide-meta">
+        <span class="chain-badge">Roadmap 2026 - 2027</span>
+        <span>Slide 10 / 11</span>
+      </div>
+    </div>
+
+    <div class="slide-content">
+      <h1 class="title">Strategic Roadmap & Milestone Execution</h1>
+      <h2 class="subtitle">
+        Disciplined phased execution scaling from robust testnet foundation to enterprise cross-chain auction infrastructure.
+      </h2>
+
+      <div class="grid-4">
+        <div class="card accent-emerald">
+          <div>
+            <div style="font-size: 13px; font-weight: 700; color: #34d399; margin-bottom: 8px;">PHASE 1 • Q4 2026</div>
+            <div class="card-title" style="font-size: 19px; color: #ffffff;">Foundation (Complete)</div>
+            <p class="card-desc" style="font-size: 13.5px; margin-top: 8px;">
+              Core smart contracts deployed, verified, and load-tested live.
+            </p>
+          </div>
+          <ul class="card-list emerald" style="font-size: 13.5px;">
+            <li>English auction with anti-snipe</li>
+            <li>Pull-payment escrow system</li>
+            <li>26/26 Foundry tests passing</li>
+            <li>Botchain Testnet deployment</li>
+            <li>Pinata IPFS creator pipeline</li>
+            <li>24 multi-wallet live transactions</li>
+          </ul>
+        </div>
+
+        <div class="card accent-cyan">
+          <div>
+            <div style="font-size: 13px; font-weight: 700; color: #38bdf8; margin-bottom: 8px;">PHASE 2 • Q1 2027</div>
+            <div class="card-title" style="font-size: 19px; color: #ffffff;">Format Expansion</div>
+            <p class="card-desc" style="font-size: 13.5px; margin-top: 8px;">
+              Multi-format auction mechanics and mainnet launch preparation.
+            </p>
+          </div>
+          <ul class="card-list cyan" style="font-size: 13.5px;">
+            <li>Descending Dutch auction engine</li>
+            <li>Sealed-bid blind auction module</li>
+            <li>Automated EIP-2981 royalty splits</li>
+            <li>Tier-1 smart contract audit</li>
+            <li>Botchain Mainnet deployment</li>
+            <li>First 10 flagship creator drops</li>
+          </ul>
+        </div>
+
+        <div class="card accent-gold">
+          <div>
+            <div style="font-size: 13px; font-weight: 700; color: #fbbf24; margin-bottom: 8px;">PHASE 3 • Q2 2027</div>
+            <div class="card-title" style="font-size: 19px; color: #ffffff;">Developer SDK & Mobile</div>
+            <p class="card-desc" style="font-size: 13.5px; margin-top: 8px;">
+              Extending auction rails to third-party dApps and mobile devices.
+            </p>
+          </div>
+          <ul class="card-list" style="font-size: 13.5px;">
+            <li>Lightbid npm SDK for games</li>
+            <li>Real-time WebSocket orderbook</li>
+            <li>Automated bidding bot framework</li>
+            <li>Mobile PWA with push alerts</li>
+            <li>DAO treasury auction modules</li>
+            <li>Creator royalty management UI</li>
+          </ul>
+        </div>
+
+        <div class="card accent-purple">
+          <div>
+            <div style="font-size: 13px; font-weight: 700; color: #c084fc; margin-bottom: 8px;">PHASE 4 • Q3 2027</div>
+            <div class="card-title" style="font-size: 19px; color: #ffffff;">Institutional & RWA</div>
+            <p class="card-desc" style="font-size: 13.5px; margin-top: 8px;">
+              Cross-chain liquidity and institutional tokenized assets.
+            </p>
+          </div>
+          <ul class="card-list" style="font-size: 13.5px;">
+            <li>RWA compliance & legal framework</li>
+            <li>Cross-chain bidding (CCIP)</li>
+            <li>Multi-sig institutional custody</li>
+            <li>Enterprise phygital luxury drops</li>
+            <li>Governance token & DAO launch</li>
+            <li>Global auction syndication</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div class="footer-brand">LIGHT<span>BID</span> PROTOCOL</div>
+      <div>Botchain Testnet (Chain ID 968) • <span class="footer-explorer">https://scan.bohr.life</span></div>
+      <div>Page 10</div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 11: THE ASK & CONTACT                                  -->
+  <!-- ============================================================ -->
+  <section class="slide" style="justify-content: space-between;">
+    <div class="slide-header">
+      <div class="slide-tag" style="background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.35); color: #fbbf24;">
+        🤝 Investment & Partnerships
+      </div>
+      <div class="slide-meta">
+        <span class="chain-badge">Join the Future of Web3 Auctions</span>
+        <span>Slide 11 / 11</span>
+      </div>
+    </div>
+
+    <div class="slide-content">
+      <div class="grid-2" style="align-items: stretch; margin-top: 10px;">
+        <!-- Left: The Ask & Allocation -->
+        <div class="card accent-gold" style="padding: 32px;">
+          <div style="font-size: 14px; font-weight: 700; color: #fbbf24; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">
+            Investment Offering
+          </div>
+          <div style="font-size: 42px; font-weight: 800; color: #ffffff; margin-bottom: 16px;">
+            $1,250,000 <span style="font-size: 24px; color: #94a3b8; font-weight: 500;">Seed Round</span>
+          </div>
+          <p style="font-size: 15px; color: #94a3b8; line-height: 1.6; margin-bottom: 24px;">
+            Accelerating engineering, smart contract formal verification, and creator onboarding to establish Lightbid as the premier decentralized auction layer on Botchain.
+          </p>
+
+          <div style="border-top: 1px solid #1e293b; padding-top: 20px;">
+            <div style="font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 14px;">Capital Allocation:</div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; justify-content: space-between; font-size: 14px;">
+                <span style="color: #cbd5e1;">⚙️ Core Protocol & SDK Engineering</span>
+                <strong style="color: #fbbf24;">45% ($562.5k)</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 14px;">
+                <span style="color: #cbd5e1;">🛡️ Smart Contract Audits & Security</span>
+                <strong style="color: #38bdf8;">25% ($312.5k)</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 14px;">
+                <span style="color: #cbd5e1;">🎨 Creator Grants & Ecosystem Liquidity</span>
+                <strong style="color: #34d399;">20% ($250.0k)</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 14px;">
+                <span style="color: #cbd5e1;">⚖️ Legal, Operations & Compliance</span>
+                <strong style="color: #c084fc;">10% ($125.0k)</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Verification & Contact -->
+        <div class="card accent-cyan" style="padding: 32px;">
+          <div style="font-size: 14px; font-weight: 700; color: #38bdf8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">
+            On-Chain Protocol Credentials
+          </div>
+          <div style="font-size: 26px; font-weight: 800; color: #ffffff; margin-bottom: 16px;">
+            Verified Live on Botchain Testnet
+          </div>
+
+          <div style="background: #080c14; border: 1px solid #1e293b; border-radius: 12px; padding: 18px; margin-bottom: 20px; font-family: 'JetBrains Mono', monospace; font-size: 13.5px; line-height: 1.8;">
+            <div style="color: #64748b;">// Core Contract Address</div>
+            <div style="color: #fbbf24; word-break: break-all;">0x39FfB249F207a2583Be272d2f55AcebE0d09b2b8</div>
+            <div style="color: #64748b; margin-top: 8px;">// Network Infrastructure</div>
+            <div style="color: #cbd5e1;">Chain ID: 968 | RPC: https://rpc.bohr.life</div>
+            <div style="color: #64748b; margin-top: 8px;">// Block Explorer</div>
+            <div><a href="https://scan.bohr.life/address/0x39FfB249F207a2583Be272d2f55AcebE0d09b2b8" class="footer-explorer" target="_blank">https://scan.bohr.life/address/0x39Ff...b2b8 ↗</a></div>
+          </div>
+
+          <div style="border-top: 1px solid #1e293b; padding-top: 16px;">
+            <div style="font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 8px;">Ready to Partner with Lightbid:</div>
+            <p style="font-size: 13.5px; color: #94a3b8; line-height: 1.5;">
+              We welcome early angel investors, creator collectives, gaming studios, and Botchain ecosystem builders to participate in the future of fair Web3 auctions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div class="footer-brand">LIGHT<span>BID</span> PROTOCOL</div>
+      <div>Botchain Testnet (Chain ID 968) • <span class="footer-explorer">https://scan.bohr.life</span></div>
+      <div>Page 11</div>
+    </div>
+  </section>
+
+</body>
+</html>
