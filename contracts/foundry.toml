@@ -13,6 +13,8 @@ remappings = [
 
 [rpc_endpoints]
 botchain = "https://rpc.bohr.life"
+botchain_mainnet = "https://rpc.botchain.ai"
 
 [etherscan]
 botchain = { key = "none", url = "https://scan.bohr.life/api" }
+botchain_mainnet = { key = "none", url = "https://scan.botchain.ai/api" }

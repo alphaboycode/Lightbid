@@ -28,12 +28,12 @@ const abiDir = path.resolve(__dirname, "../src/abi");
 const lightbidAbi = JSON.parse(fs.readFileSync(path.join(abiDir, "Lightbid.json"), "utf-8"));
 const testERC721Abi = JSON.parse(fs.readFileSync(path.join(abiDir, "TestERC721.json"), "utf-8"));
 
-const RPC_URL = "https://rpc.bohr.life";
-const CHAIN_ID = 968;
+const RPC_URL = "https://rpc.botchain.ai";
+const CHAIN_ID = 677;
 
 const botchain = defineChain({
   id: CHAIN_ID,
-  name: "Botchain Testnet",
+  name: "Botchain Mainnet",
   nativeCurrency: { name: "BOT", symbol: "BOT", decimals: 18 },
   rpcUrls: {
     default: { http: [RPC_URL] },
@@ -45,24 +45,24 @@ const publicClient = createPublicClient({
   transport: http(RPC_URL),
 });
 
-const LIGHTBID_ADDRESS = "0x39FfB249F207a2583Be272d2f55AcebE0d09b2b8";
-const TEST_ERC721_ADDRESS = "0xD8c92E8e8ECe7F00C947eB2C12Cdb2A110f9B63b";
+const LIGHTBID_ADDRESS = "0x249D23b4c2e58cf40eB0273e6afCE8d23170d82d";
+const TEST_ERC721_ADDRESS = "0x8b117EEE6007159983342373cC45c343db1dfcE8";
 
 // IPFS Metadata URIs uploaded from web/src/assets
 const NFT_METADATA = [
   {
     name: "Bored Ape #1042",
-    description: "Iconic Bored Ape on Botchain Testnet",
+    description: "Iconic Bored Ape on Botchain Mainnet",
     uri: "ipfs://QmWhQBtEeaEbCaX36GmJ9Jg4D627X9b4opXx2G4DrPAFGv",
   },
   {
     name: "Azuki #8812",
-    description: "Skater anime hero on Botchain Testnet",
+    description: "Skater anime hero on Botchain Mainnet",
     uri: "ipfs://QmQa1HFsNudjmj8zLMGrJqD1FMb29Jx9hEmTYDnmrPH4Dt",
   },
   {
     name: "Doodle #3319",
-    description: "Rainbow pastel character on Botchain Testnet",
+    description: "Rainbow pastel character on Botchain Mainnet",
     uri: "ipfs://QmbBekDoso2pYTMZv6EUZ1sZk6qV5e1GvsagyVWMANhLHN",
   },
 ];
@@ -94,7 +94,7 @@ const walletsConfig = [
 async function main() {
   console.log("==================================================");
   console.log("Executing Lightbid Auction & Bidding Transactions");
-  console.log("Botchain Testnet (Chain ID 968)");
+  console.log("Botchain Mainnet (Chain ID 677)");
   console.log("==================================================\n");
 
   const clients = {};
@@ -447,9 +447,15 @@ async function main() {
 
   console.table(allRecords);
 
+  // Save report to JSON file
+  fs.writeFileSync(
+    path.resolve(__dirname, "../../mainnet_transactions.json"),
+    JSON.stringify(allRecords, null, 2)
+  );
+
   console.log("\n--- Full Explorer Links ---");
   for (const r of allRecords) {
-    console.log(`[${r.wallet} Tx ${r.txIndex}/8] ${r.action}: https://scan.bohr.life/tx/${r.hash}`);
+    console.log(`[${r.wallet} Tx ${r.txIndex}/8] ${r.action}: https://scan.botchain.ai/tx/${r.hash}`);
   }
 }
 

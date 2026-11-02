@@ -1,7 +1,7 @@
 import { defineChain } from 'viem';
 import { APP_CONFIG } from './appConfig';
 
-export const botchainTestnet = defineChain({
+export const botchainMainnet = defineChain({
   id: APP_CONFIG.network.chainId,
   name: APP_CONFIG.network.name,
   nativeCurrency: {
@@ -19,11 +19,12 @@ export const botchainTestnet = defineChain({
   },
   blockExplorers: {
     default: {
-      name: 'Botchain Explorer',
+      name: 'BOTScan Explorer',
       url: APP_CONFIG.network.blockExplorerUrl,
     },
   },
-  testnet: true,
+  testnet: false,
 });
 
-export const liteforgeChain = botchainTestnet;
+export const botchainTestnet = botchainMainnet;
+export const liteforgeChain = botchainMainnet;

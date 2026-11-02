@@ -6,16 +6,16 @@
 
 export const APP_CONFIG = {
   network: {
-    chainId: 968,
-    name: 'Botchain Testnet',
-    rpcUrl: 'https://rpc.bohr.life',
-    blockExplorerUrl: 'https://scan.bohr.life',
+    chainId: 677,
+    name: 'Botchain Mainnet',
+    rpcUrl: 'https://rpc.botchain.ai',
+    blockExplorerUrl: 'https://scan.botchain.ai',
     currencySymbol: 'BOT',
   },
   contracts: {
-    lightbid: '0x39FfB249F207a2583Be272d2f55AcebE0d09b2b8' as `0x${string}`,
-    testERC20: '0x249D23b4c2e58cf40eB0273e6afCE8d23170d82d' as `0x${string}`,
-    testERC721: '0xD8c92E8e8ECe7F00C947eB2C12Cdb2A110f9B63b' as `0x${string}`,
+    lightbid: '0x249D23b4c2e58cf40eB0273e6afCE8d23170d82d' as `0x${string}`,
+    testERC20: '0xD8c92E8e8ECe7F00C947eB2C12Cdb2A110f9B63b' as `0x${string}`,
+    testERC721: '0x8b117EEE6007159983342373cC45c343db1dfcE8' as `0x${string}`,
   },
   ipfs: {
     gateway: 'https://gateway.pinata.cloud/ipfs/',

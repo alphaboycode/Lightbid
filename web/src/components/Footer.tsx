@@ -1,14 +1,79 @@
 import React from 'react';
-import { ExternalLink, ShieldCheck, Zap, HardDrive } from 'lucide-react';
+import { ExternalLink, ShieldCheck, Zap, HardDrive, Globe, Search, CheckCircle2 } from 'lucide-react';
 import { CONTRACT_ADDRESSES } from '../config/contracts';
 import { APP_CONFIG } from '../config/appConfig';
 
 export const Footer: React.FC = () => {
   const explorerUrl = APP_CONFIG.network.blockExplorerUrl;
+  const deployedContractAddress = CONTRACT_ADDRESSES.lightbid;
 
   return (
     <footer className="border-t border-dark-800 bg-dark-950 mt-20 text-slate-400 text-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        {/* Prominent Banner: Proof on bot mainnet */}
+        <div className="mb-10 p-5 rounded-2xl bg-dark-900/90 border border-brand-500/40 shadow-xl shadow-brand-500/5">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                <h3 className="text-base font-bold text-white tracking-wide">
+                  Proof on bot mainnet
+                </h3>
+                <span className="px-2 py-0.5 rounded text-xs font-mono bg-emerald-950 text-emerald-400 border border-emerald-800">
+                  Mainnet Live
+                </span>
+              </div>
+              
+              <div className="flex flex-wrap items-center gap-y-1 gap-x-4 text-xs">
+                <div className="text-slate-300">
+                  <span className="text-slate-400">Chain id: </span>
+                  <span className="font-mono font-semibold text-brand-400">677</span>
+                </div>
+                
+                <div className="flex items-center gap-1.5 text-slate-300">
+                  <span className="text-slate-400">Contract: </span>
+                  <a
+                    href={`${explorerUrl}/address/${deployedContractAddress}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-mono text-brand-400 hover:text-brand-300 font-semibold underline underline-offset-4 flex items-center gap-1 hover:underline transition-colors"
+                  >
+                    <span>{deployedContractAddress}</span>
+                    <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Hyperlinks for BOT Chain Website and BOTScan Explorer */}
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="https://www.botchain.ai/en/"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-dark-800 hover:bg-dark-700 border border-dark-700 hover:border-brand-500 text-slate-200 hover:text-white text-xs font-semibold transition-all shadow-sm"
+              >
+                <Globe className="w-4 h-4 text-brand-400" />
+                <span>BOT Chain Website</span>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
+              </a>
+
+              <a
+                href="https://scan.botchain.ai/"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-dark-800 hover:bg-dark-700 border border-dark-700 hover:border-brand-500 text-slate-200 hover:text-white text-xs font-semibold transition-all shadow-sm"
+              >
+                <Search className="w-4 h-4 text-brand-400" />
+                <span>BOTScan explorer</span>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* 3-Column Ecosystem Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Col 1: About */}
           <div className="space-y-3 md:col-span-1">
@@ -19,7 +84,7 @@ export const Footer: React.FC = () => {
               <span className="font-bold text-white text-base">Lightbid</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Decentralized, non-custodial auction marketplace on Botchain Testnet (Chain ID: 968). Supporting ERC-721, ERC-1155, and ERC-20 assets.
+              Decentralized, non-custodial auction marketplace on Botchain Mainnet (Chain ID: 677). Supporting ERC-721, ERC-1155, and ERC-20 assets.
             </p>
             <div className="flex items-center space-x-2 text-[11px] text-brand-400 font-medium">
               <Zap className="w-3.5 h-3.5" />
@@ -27,10 +92,10 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Col 2: Smart Contracts on Botchain */}
+          {/* Col 2: Smart Contracts on Botchain Mainnet */}
           <div className="space-y-2 md:col-span-2">
             <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-300">
-              Deployed Contracts (Botchain Testnet 968)
+              Deployed Contracts (Botchain Mainnet 677)
             </h4>
             <div className="space-y-1.5 text-xs font-mono">
               <div className="flex items-center justify-between p-2 rounded bg-dark-900 border border-dark-800">
@@ -41,8 +106,8 @@ export const Footer: React.FC = () => {
                   rel="noreferrer"
                   className="text-brand-400 hover:text-brand-300 flex items-center gap-1 font-mono text-[11px]"
                 >
-                  {CONTRACT_ADDRESSES.lightbid.slice(0, 10)}...{CONTRACT_ADDRESSES.lightbid.slice(-8)}
-                  <ExternalLink className="w-3 h-3" />
+                  {CONTRACT_ADDRESSES.lightbid}
+                  <ExternalLink className="w-3 h-3 shrink-0" />
                 </a>
               </div>
               <div className="flex items-center justify-between p-2 rounded bg-dark-900 border border-dark-800">
@@ -53,8 +118,8 @@ export const Footer: React.FC = () => {
                   rel="noreferrer"
                   className="text-brand-400 hover:text-brand-300 flex items-center gap-1 font-mono text-[11px]"
                 >
-                  {CONTRACT_ADDRESSES.testERC20.slice(0, 10)}...{CONTRACT_ADDRESSES.testERC20.slice(-8)}
-                  <ExternalLink className="w-3 h-3" />
+                  {CONTRACT_ADDRESSES.testERC20}
+                  <ExternalLink className="w-3 h-3 shrink-0" />
                 </a>
               </div>
               <div className="flex items-center justify-between p-2 rounded bg-dark-900 border border-dark-800">
@@ -65,8 +130,8 @@ export const Footer: React.FC = () => {
                   rel="noreferrer"
                   className="text-brand-400 hover:text-brand-300 flex items-center gap-1 font-mono text-[11px]"
                 >
-                  {CONTRACT_ADDRESSES.testERC721.slice(0, 10)}...{CONTRACT_ADDRESSES.testERC721.slice(-8)}
-                  <ExternalLink className="w-3 h-3" />
+                  {CONTRACT_ADDRESSES.testERC721}
+                  <ExternalLink className="w-3 h-3 shrink-0" />
                 </a>
               </div>
             </div>
@@ -93,15 +158,24 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-dark-800 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} Lightbid. Botchain Testnet Auction Protocol.</p>
+          <p>© {new Date().getFullYear()} Lightbid. Botchain Mainnet Auction Protocol (Chain ID: 677).</p>
           <div className="flex items-center space-x-4 mt-2 sm:mt-0">
             <a
-              href="https://scan.bohr.life"
+              href="https://www.botchain.ai/en/"
               target="_blank"
               rel="noreferrer"
               className="hover:text-slate-300 transition-colors"
             >
-              Botchain Explorer
+              BOT Chain Website
+            </a>
+            <span>•</span>
+            <a
+              href="https://scan.botchain.ai/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-slate-300 transition-colors"
+            >
+              BOTScan explorer
             </a>
             <span>•</span>
             <a

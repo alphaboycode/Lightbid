@@ -41,8 +41,7 @@ contract DeployScript is Script {
         require(deployer != address(0), "DEPLOYER is zero address");
         require(feeBps <= 1000, "FEE_BPS exceeds Lightbid MAX_FEE_BPS (1000)");
 
-        console.log("==================================================");
-        console.log("Deploying Lightbid Ecosystem on Botchain (968)");
+        console.log("Deploying Lightbid Ecosystem on Botchain. Chain ID:", block.chainid);
         console.log("Deployer / Owner:", deployer);
         console.log("Fee Recipient:", deployer);
         console.log("Fee BPS:", feeBps);
