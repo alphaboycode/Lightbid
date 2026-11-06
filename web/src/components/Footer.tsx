@@ -2,6 +2,7 @@ import React from 'react';
 import { ExternalLink, ShieldCheck, Zap, HardDrive, Globe, Search, CheckCircle2 } from 'lucide-react';
 import { CONTRACT_ADDRESSES } from '../config/contracts';
 import { APP_CONFIG } from '../config/appConfig';
+import botLogo from '../assets/bot-logo.svg';
 
 export const Footer: React.FC = () => {
   const explorerUrl = APP_CONFIG.network.blockExplorerUrl;
@@ -157,27 +158,84 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="border-t border-dark-800 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} Lightbid. Botchain Mainnet Auction Protocol (Chain ID: 677).</p>
+        {/* Part of the Ecosystem Section */}
+        <div className="border-t border-dark-800 mt-14 pt-12 text-center">
+          <div className="max-w-2xl mx-auto flex flex-col items-center">
+            
+            {/* Header label */}
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-brand-400">
+              Part of the Ecosystem
+            </p>
+
+            {/* Circular badge with glowing ring */}
+            <div className="my-6 relative flex items-center justify-center">
+              {/* Soft ambient glow */}
+              <div className="absolute w-28 h-28 rounded-full bg-brand-500/15 blur-xl pointer-events-none" />
+              
+              {/* Outer glowing border ring */}
+              <div className="relative w-24 h-24 rounded-full p-[2px] bg-gradient-to-b from-brand-500/40 via-brand-500/20 to-brand-500/5 shadow-[0_0_25px_rgba(34,197,94,0.15)]">
+                {/* Inner badge circle taking app background */}
+                <div className="w-full h-full rounded-full bg-dark-900 border border-dark-800/80 flex items-center justify-center p-4">
+                  <img
+                    src={botLogo}
+                    alt="BOT Chain Logo"
+                    className="w-12 h-12 object-contain select-none drop-shadow-[0_2px_8px_rgba(16,163,127,0.3)]"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* BOT Chain Title */}
+            <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+              <span className="text-brand-400">BOT</span> <span className="text-white">Chain</span>
+            </h3>
+
+            {/* Lightbid Tagline */}
+            <p className="text-sm sm:text-base text-slate-300 mt-2 font-medium">
+              Every bid counts. Every auction ends fair.
+            </p>
+
+            {/* Decorative Divider with Center Diamond */}
+            <div className="my-6 flex items-center justify-center gap-3 w-48 sm:w-64">
+              <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-brand-500/30 to-brand-500/60" />
+              <div className="w-2 h-2 rotate-45 bg-brand-400 shrink-0 shadow-[0_0_6px_rgba(74,222,128,0.7)]" />
+              <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-brand-500/30 to-brand-500/60" />
+            </div>
+
+            {/* Ecosystem Links (No GitHub as requested) */}
+            <div className="flex items-center justify-center gap-6 sm:gap-8 text-sm">
+              <a
+                href="https://www.botchain.ai/en/"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 text-slate-300 hover:text-white transition-colors group"
+              >
+                <Globe className="w-4 h-4 text-slate-400 group-hover:text-brand-400 transition-colors" />
+                <span className="font-medium">botchain.ai</span>
+              </a>
+
+              <a
+                href="https://scan.botchain.ai/"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 text-slate-300 hover:text-white transition-colors group"
+              >
+                <Search className="w-4 h-4 text-slate-400 group-hover:text-brand-400 transition-colors" />
+                <span className="font-medium">Explorer</span>
+              </a>
+            </div>
+
+            {/* Chain Info Copyright */}
+            <p className="text-xs text-slate-500 font-mono mt-8">
+              © 2026 <span className="font-semibold text-slate-300">BOT Chain</span> · Mainnet · Chain ID <span className="font-semibold text-slate-300">677</span>
+            </p>
+          </div>
+        </div>
+
+        {/* Bottom Protocol Footer Bar */}
+        <div className="border-t border-dark-800/80 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+          <p>© {new Date().getFullYear()} Lightbid. Anti-Snipe Decentralized Auction Protocol.</p>
           <div className="flex items-center space-x-4 mt-2 sm:mt-0">
-            <a
-              href="https://www.botchain.ai/en/"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-slate-300 transition-colors"
-            >
-              BOT Chain Website
-            </a>
-            <span>•</span>
-            <a
-              href="https://scan.botchain.ai/"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-slate-300 transition-colors"
-            >
-              BOTScan explorer
-            </a>
-            <span>•</span>
             <a
               href="https://pinata.cloud"
               target="_blank"
